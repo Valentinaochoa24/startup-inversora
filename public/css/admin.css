@@ -1,0 +1,634 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --bg-black-100: #353535;
+  --bg-black-50: #ffffff;
+  --bg-black-20: #0f4223;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  overflow: auto;
+  background-color: #baceba3f;
+}
+body.dark {
+  --bg-black-100: #fff;
+  --bg-black-50: #02200e;
+  --bg-black-20: #eef0f4;
+}
+.menu {
+  position: absolute;
+  width: 60px;
+  height: 100%;
+  background-color: var(--bg-black-50);
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  margin: auto;
+  border-radius: 0.8rem;
+  transition: 0.3s ease 0.15s;
+}
+.menu.open {
+  width: 270px;
+}
+.menu a {
+  text-decoration: none;
+}
+.menu .actionbar {
+  width: 100%;
+  height: 10%;
+  padding: 0.5rem;
+  overflow: hidden;
+  margin-top: 10px;
+}
+.menu .actionbar div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 0.5rem;
+  transition: 0.3s ease;
+}
+.menu .actionbar div button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--bg-black-100);
+  width: 45px;
+  height: 45px;
+  transition: 0.3s ease;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 999;
+}
+.menu .actionbar i {
+  transition: 0.3s ease;
+}
+.menu .actionbar div button:hover {
+  background-color: rgb(17, 153, 39);
+}
+.menu .actionbar div h3 {
+  width: calc(100% - 45px);
+  text-align: center;
+}
+.menu .optionsBar {
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  height: 60%;
+  padding: 0 0.5rem;
+  align-items: center;
+  flex-direction: column;
+}
+.menu .optionsBar .menuItem {
+  width: 100%;
+  height: 45px;
+  margin: 0.3rem;
+}
+.menu .optionsBar .menuItem .menuOption {
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 0.5rem;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+.menu .optionsBar .menuItem .menuOption:hover {
+  background-color: rgb(17, 153, 39);
+}
+.menu .optionsBar .menuItem .menuOption i {
+  width: 45px;
+  text-align: center;
+  color: var(--bg-black-100);
+  transition: 0.3s ease-in-out;
+}
+.menu .optionsBar .menuItem .menuOption h5 {
+  width: calc(100% - 45px);
+  text-align: start;
+}
+.menuText {
+    font-size: 10p;
+  color: var(--bg-black-20);
+  transform: translateX(-250px);
+  opacity: 0;
+  transition: transform 0.3s ease 0.1s;
+}
+.menuText.open2 {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.menu .menuUser {
+  width: 100%;
+  padding: 0;
+  position: absolute;
+  bottom: 65px;
+  left: 0;
+}
+.menu .menuUser a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  padding: 0.5rem;
+  position: relative;
+}
+.menu .menuUser a div {
+  width: 45px;
+  height: 45px;
+  position: relative;
+  border-radius: 0.5rem;
+}
+.menu .menuUser a div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+.menu .menuUser a .Username {
+  width: calc(70% - 45px);
+}
+.menu .menuUser a p {
+  width: calc(30% - 45px);
+}
+.menu .menuUser a:hover p {
+  animation: animArrow 0.3s ease 2;
+}
+@keyframes animArrow {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.menu .menuUser .userInfo {
+  position: absolute;
+  width: 7rem;
+  height: 6rem;
+  opacity: 0;
+  color: var(--bg-black-50);
+  pointer-events: none;
+  bottom: 58%;
+  left: 3.5rem;
+  transition: 0.3s ease;
+  transform: scale(0);
+  transform-origin: bottom left;
+}
+.menu .menuUser .userInfo div {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 20px);
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3);
+  background-color: var(--bg-black-100);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.menu .menuUser .userInfo div p {
+  font-size: 12px;
+}
+.menu .menuUser .userInfo div::before {
+  content: "";
+  position: absolute;
+  bottom: -18px;
+  left: -2px;
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 15px solid var(--bg-black-100);
+  transform: rotate(45deg);
+}
+.menu .menuUser:hover .userInfo {
+  pointer-events: all;
+  opacity: 1;
+  transform: scale(1);
+}
+.menu .themeBar {
+  overflow: hidden;
+  width: 100%;
+  height: 10%;
+  padding: 0.5rem;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+}
+.menu .themeBar div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 0.5rem;
+  transition: 0.3s ease;
+}
+.menu .themeBar div button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--bg-black-100);
+  width: 100%;
+  height: 45px;
+  transition: 0.3s ease;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.menu .themeBar div button {
+  background-color: rgb(17, 153, 39);
+}
+.menu .themeBar div button i {
+  color: #fff;
+}
+.menu .optionsBar .menuItem .menuOption:hover .menuText,
+.menu .optionsBar .menuItem .menuOption:hover i,
+.menu .actionbar div button:hover i,
+.menu .logoutButton,
+.menu .themeBar div button:hover i {
+  color: #fff;
+  transition: 0.3s ease-in-out;
+}
+
+.menu .logoutButton div button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--bg-black-100);
+  width: 100%;
+  height: 45px;
+  transition: 0.3s ease;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.menu .logoutButton div button {
+  background-color: rgb(17, 153, 39);
+}
+.menu .logoutButton div button i {
+  color: #fff;
+}
+.dashboard-content {
+    flex: 1;
+    padding: 20px;
+    height: 100%;
+    align-items: center;
+    transition: margin-left 0.3s ease; /* Agregar transición para suavizar el desplazamiento */
+    margin-left: 90px; /* Espacio inicial para el menú lateral */
+}
+
+.menu.open ~ .dashboard-content {
+margin-left: 290px; /* Desplazar el contenido cuando el menú está abierto */
+}
+
+@media (max-width: 768px) {
+.menu.open ~ .dashboard-content {
+    margin-left: 0; /* Para dispositivos móviles, el contenido debe estar alineado a la izquierda */
+
+}
+table{
+  width: min-content;
+}
+body{
+  width: min-content;
+}
+}
+ 
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem;
+    color: #37474f;
+  }
+  
+  .header p {
+    font-size: 1.2rem;
+    color: #607d8b;
+  }
+  
+  .cards {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  
+  .card {
+    flex: 1;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 90%;
+    
+  }
+  
+  .card h2 {
+    font-size: 16px;
+    color: #37474f;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgb(2, 212, 177);
+
+  }
+  
+  .card p {
+    font-size: 12px;
+    color: #607d8b;
+    margin-bottom: 20px;
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #388e3c;
+  }
+
+  .chart-container {
+    width: 100%;
+    height: 100%;
+  }
+
+.table{
+    width: 100%;
+    font-size: 10px;
+}
+.table a {
+    font-size: 10px;
+}
+
+
+#cardImg {
+    background-color: #d4edda; /* Fondo verde claro */
+    border: none; /* Eliminar borde de la tarjeta */
+}
+
+.img-dash {
+display: flex;
+justify-content: center; /* Centrar la imagen horizontalmente */
+align-items: center; /* Centrar la imagen verticalmente */
+padding: 20px 0; /* Espaciado alrededor de la imagen */
+}
+
+.img-dash img {
+max-width: 40%; /* Asegurar que la imagen no supere el ancho de su contenedor */
+}
+
+.numero {
+text-align: center; /* Centrar el texto */
+font-size: 24px; /* Tamaño de fuente */
+font-weight: bold; /* Negrita */
+margin-top: 10px; /* Espaciado superior */
+}
+
+#containerChar
+{
+width: 100%;
+height: 100%;
+margin: 0;
+padding: 0;
+}
+
+
+.topbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+}
+
+.search-bar {
+    margin-right: 10px;
+}
+
+.search-bar input[type="text"] {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.notification-icon {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Estilos adicionales según sea necesario */
+
+#checkbox {
+  display: none;
+}
+
+.toggle {
+  position: relative;
+  width: 40px;
+  cursor: pointer;
+  margin: auto;
+  display: block;
+  height: calc(4px * 3 + 11px * 2);
+}
+
+.bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: calc(4px / 2);
+  background: #08672F;
+  color: inherit;
+  opacity: 1;
+  transition: none 0.35s cubic-bezier(.5,-0.35,.35,1.5) 0s;
+}
+
+/***** Collapse Animation *****/
+
+.bar--top {
+  bottom: calc(50% + 11px + 4px/ 2);
+  transition-property: bottom,margin,transform;
+  transition-delay: calc(0s + 0.35s),0s,0s;
+}
+
+.bar--middle {
+  top: calc(50% - 4px/ 2);
+  transition-property: top,opacity;
+  transition-duration: 0.35s,0s;
+  transition-delay: calc(0s + 0.35s * 1.3),calc(0s + 0.35s * 1.3);
+}
+
+.bar--bottom {
+  top: calc(50% + 11px + 4px/ 2);
+  transition-property: top,transform;
+  transition-delay: 0s;
+}
+
+#checkbox:checked + .toggle .bar--top {
+  bottom: calc(50% - 11px - 4px);
+  margin-bottom: calc(11px + 4px/ 2);
+  transform: rotate(45deg);
+  transition-delay: calc(0s + 0.35s * .3),calc(0s + 0.35s * 1.3),calc(0s + 0.35s * 1.3);
+}
+
+#checkbox:checked + .toggle .bar--middle {
+  top: calc(50% + 11px);
+  opacity: 0;
+  transition-duration: 0.35s,0s;
+  transition-delay: 0s,calc(0s + 0.35s);
+}
+
+#checkbox:checked + .toggle .bar--bottom {
+  top: calc(50% - 4px/ 2);
+  transform: rotate(-45deg);
+  transition-delay: calc(0s + 0.35s * 1.3),calc(0s + 0.35s * 1.3);
+}
+
+.header {
+  position: relative;
+  overflow: hidden;
+}
+
+#slideLogin {
+  width: 100%;
+  height: 190px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Alinea el texto hacia la izquierda */
+  color: white; /* Cambia el color del texto según sea necesario */
+  padding: 20px; /* Agrega un espacio interno al overlay */
+}
+
+.overlay h2 {
+  font-size: 24px; /* Tamaño de fuente del título */
+  margin-bottom: 10px; /* Espaciado inferior del título */
+  text-align: left; /* Alinea el texto hacia la izquierda */
+}
+
+.overlay p {
+  font-size: 16px; /* Tamaño de fuente del texto */
+  margin: 0; /* Elimina el margen predeterminado del párrafo */
+  text-align: left; /* Alinea el texto hacia la izquierda */
+}
+
+
+.tableUsuario{
+  width: 100%;
+  font-size: 12px;
+}
+
+.btn-icon {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  color: #dc3545; /* Color rojo del icono */
+}
+
+.btn-icon:hover {
+  color: #c82333; /* Cambiar color al pasar el mouse */
+}
+
+.menu .optionsBar .menuItem .userInfo {
+  position: absolute;
+  width: 7rem;
+  height: 6rem;
+  opacity: 0;
+  color: var(--bg-black-50);
+  pointer-events: none;
+  bottom: 58%;
+  left: 3.5rem;
+  transition: 0.3s ease;
+  transform: scale(0);
+  transform-origin: bottom left;
+}
+.menu .optionsBar .menuItem .userInfo div {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 20px);
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3);
+  background-color: var(--bg-black-100);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.menu .optionsBar .menuItem .userInfo div p {
+  font-size: 12px;
+}
+.menu .optionsBar .menuItem .userInfo div::before {
+  content: "";
+  position: absolute;
+  bottom: -18px;
+  left: -2px;
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 15px solid var(--bg-black-100);
+  transform: rotate(45deg);
+}
+.menu .optionsBar .menuItem:hover .userInfo {
+  pointer-events: all;
+  opacity: 1;
+  transform: scale(1);
+}
